@@ -34,6 +34,8 @@ The error model embeds scan-angle residuals and rotation-axis tilt directly into
   <img src="assets/scan_angle_imaging_examples.png" width="100%" alt="Simulated Baotou target-field observations at different scan angles">
 </p>
 
+<p align="center"><sub>Basemap imagery: © Esri and its data providers. Simulation, artificial targets, and annotations: © The Authors.</sub></p>
+
 Simulated observations of the Baotou calibration field illustrate the variation in target appearance and ground sampling distance (GSD) across the scan-angle range. Large-angle observations exhibit stronger oblique-view deformation and coarser ground sampling, motivating angle-aware observation modeling.
 
 ## Compensation framework
