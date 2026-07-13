@@ -20,14 +20,6 @@ A rotating payload extends cross-track observation coverage, but its additional 
 
 The rigorous model establishes the physical mapping from detector coordinates to the ground intersection through synchronized satellite and payload geometry. It provides the common basis for error modeling, control-point parameter estimation, positioning, and image geometric correction.
 
-## Mechanism-specific geometric error model
-
-<p align="center">
-  <img src="assets/rotating_scan_error_principle.png" width="92%" alt="Propagation of scan-angle and rotation-axis errors through rotating-scan geometry">
-</p>
-
-The error model embeds scan-angle residuals and rotation-axis tilt directly into the imaging ray. Their influence propagates through the ground intersection and becomes increasingly pronounced as the viewing geometry moves toward the edge of the scan.
-
 ## Scan-angle-dependent imaging
 
 <p align="center">
