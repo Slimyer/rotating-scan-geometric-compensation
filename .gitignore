@@ -13,8 +13,12 @@ assets/*
 !assets/gcp_coverage_observability.png
 !assets/closed_loop_validation.png
 !assets/relative_geometric_distortion.png
+!assets/rotating_scan_error_overview.png
+!assets/rigorous_geometric_model.png
+!assets/scan_angle_imaging_examples.png
+!assets/rotating_scan_error_principle.png
 
 !docs/
 docs/*
 !docs/figure_index.md
-
+!docs/technical_results.md

@@ -1,66 +1,72 @@
 # Geometric Error Modeling and Compensation for Rotating Scan Remote Sensing Satellites
 
-This repository is the project page for a manuscript on geometric positioning and compensation for a rotating-scan remote sensing satellite. It currently presents a concise overview of the study and selected author-generated visual results.
+> A visual project page for a manuscript on mechanism-aware geometric positioning and compensation for rotating-scan remote sensing satellites.
 
-> **Project status:** Manuscript in preparation for submission.
+**Project status:** Manuscript in preparation for submission.
 
-## Overview
+## Rotating-scan concept and error sources
 
-Rotating-scan imaging expands cross-track coverage by rotating the payload during acquisition, but the additional mechanism introduces scan-angle-dependent geometric errors and strongly varying ground sampling distance (GSD). The study develops a unified framework that:
+<p align="center">
+  <img src="assets/rotating_scan_error_overview.png" width="100%" alt="Rotating-scan satellite and mechanism-specific geometric error sources">
+</p>
 
-- explicitly models scan-angle and rotation-axis tilt errors within the rigorous imaging chain;
-- estimates compensation parameters from ground control points (GCPs) distributed over multiple scan angles;
-- accounts for angle-dependent observation uncertainty through GSD-aware weighted least squares;
-- evaluates point-wise geolocation accuracy, parameter observability, model limitations, and local relative geometric distortion.
+A rotating payload extends cross-track observation coverage, but its additional motion introduces geometric effects that are absent from conventional fixed-payload imaging. This study explicitly represents two mechanism-specific error sources: the scan-angle error and the two directional components of rotation-axis tilt.
 
-## Method overview
+## Rigorous imaging geometry
 
-The experimental workflow follows four stages:
+<p align="center">
+  <img src="assets/rigorous_geometric_model.png" width="68%" alt="Rigorous geometric imaging model">
+</p>
 
-1. introduce representative rotating-mechanism errors into the auxiliary geometry;
-2. estimate error parameters from GCP constraints;
-3. feed the estimated parameters back into positioning and geometric-correction models;
-4. evaluate independent check points and image-level geometric consistency.
+The rigorous model establishes the physical mapping from detector coordinates to the ground intersection through synchronized satellite and payload geometry. It provides the common basis for error modeling, control-point parameter estimation, positioning, and image geometric correction.
 
-Two compensation models are considered. The first models low-order scan-angle error, while the second additionally represents rotation-axis tilt. Equal-weight and GSD-aware weighted estimation are compared under spatially varying observation uncertainty.
+## Mechanism-specific geometric error model
 
-## Selected visual results
+<p align="center">
+  <img src="assets/rotating_scan_error_principle.png" width="92%" alt="Propagation of scan-angle and rotation-axis errors through rotating-scan geometry">
+</p>
 
-### Rotating-mechanism error compensation
+The error model embeds scan-angle residuals and rotation-axis tilt directly into the imaging ray. Their influence propagates through the ground intersection and becomes increasingly pronounced as the viewing geometry moves toward the edge of the scan.
 
-![Rotating-mechanism error compensation](assets/mechanism_compensation.png)
+## Scan-angle-dependent imaging
 
-The comparison illustrates the scan-angle-dependent error amplification and the contribution of explicit rotation-axis modeling.
+<p align="center">
+  <img src="assets/scan_angle_imaging_examples.png" width="100%" alt="Simulated Baotou target-field observations at different scan angles">
+</p>
 
-### GSD-aware weighted estimation
+Simulated observations of the Baotou calibration field illustrate the variation in target appearance and ground sampling distance (GSD) across the scan-angle range. Large-angle observations exhibit stronger oblique-view deformation and coarser ground sampling, motivating angle-aware observation modeling.
 
-![GSD-aware weighted estimation](assets/gsd_aware_weighting.png)
+## Compensation framework
 
-The figure connects anisotropic GSD growth with observation weighting and positioning-error propagation.
+The study follows a unified error-modeling and correction chain:
 
-### GCP angular coverage and observability
+1. mechanism-specific errors are introduced into the rotating-scan imaging geometry;
+2. compensation parameters are estimated from ground control points distributed over multiple scan angles;
+3. the estimated parameters are fed back into positioning and geometric-correction models;
+4. independent check points and non-target image regions are used to evaluate absolute and relative geometric accuracy.
 
-![GCP angular coverage and observability](assets/gcp_coverage_observability.png)
+The first compensation model represents low-order scan-angle error. The extended model additionally represents rotation-axis tilt, while GSD-aware weighted estimation accounts for the spatially varying uncertainty of image observations.
 
-The results show how scan-angle coverage affects parameter conditioning and the stability of the geometric compensation model.
+## Selected quantitative evidence
 
-### Image-level closed-loop validation
+<p align="center">
+  <img src="assets/mechanism_compensation.png" width="100%" alt="Rotating-mechanism error compensation results">
+</p>
 
-![Image-level closed-loop validation](assets/closed_loop_validation.png)
+The results show that scan-angle compensation removes the dominant positioning error, whereas explicit rotation-axis modeling further suppresses the structured residuals, particularly in the large-angle region.
 
-Independent check-point evaluation provides an image-level closed-loop assessment of the estimated compensation parameters.
+## Main findings
 
-### Local relative geometric distortion
+- Rotating-mechanism errors exhibit clear scan-angle-dependent amplification.
+- Rotation-axis tilt leaves a directional residual that cannot be fully represented by a scan-angle-only model.
+- The anisotropic GSD variation affects control-point observation uncertainty and motivates weighted estimation.
+- The estimated parameters improve both point-wise positioning and local image-level geometric consistency.
 
-![Local relative geometric distortion](assets/relative_geometric_distortion.png)
-
-The analysis separates overall geolocation displacement from translation-removed local distortion and directional distance-preservation errors.
-
-Additional information about the displayed figures is available in [the figure index](docs/figure_index.md).
+Additional visual evidence is available in the [technical results overview](docs/technical_results.md), and figure provenance is summarized in the [figure index](docs/figure_index.md).
 
 ## Code and data availability
 
-This repository serves as a project page for a manuscript currently being prepared for submission. At this stage, it provides only a high-level description of the work and selected author-generated visualizations.
+This repository serves as a project page for a manuscript currently being prepared for submission. At this stage, it provides only a high-level description of the work and selected visualizations.
 
 Source code, detailed experimental configurations, auxiliary data, and full-resolution simulation imagery are not included during manuscript preparation and peer review. Subject to journal policy and institutional, coauthor, intellectual-property, third-party-data, and legal approvals, the authors intend to release the reproducibility materials after acceptance or publication. The final release scope and license will be stated here.
 
