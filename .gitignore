@@ -1,0 +1,20 @@
+# Allowlist-only project page. Everything is ignored unless explicitly listed.
+*
+
+!.gitignore
+!README.md
+!NOTICE.md
+
+!assets/
+assets/*
+!assets/mechanism_compensation.png
+!assets/dynamic_error_residuals.png
+!assets/gsd_aware_weighting.png
+!assets/gcp_coverage_observability.png
+!assets/closed_loop_validation.png
+!assets/relative_geometric_distortion.png
+
+!docs/
+docs/*
+!docs/figure_index.md
+
